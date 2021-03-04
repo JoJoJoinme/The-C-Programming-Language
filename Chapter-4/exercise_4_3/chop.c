@@ -3,10 +3,13 @@
 
 char buf[BUFFSIZE];
 int bufp = 0;
+char queue_pop(void);
 
-int getch(void)
+int getch(int queue_flag)
 {
-    return (bufp > 0) ? buf[--bufp] : getchar();
+    if(queue_flag != 1)
+        return (bufp > 0) ? buf[--bufp] : getchar();
+    return (bufp > 0) ? buf[--bufp] : queue_pop();
 }
 
 void ungetch(int c)
