@@ -1,7 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 
 float temp_convert(int fahr);
-
 
 void main()
 {
@@ -13,10 +12,10 @@ void main()
     step = 20;
 
     fahr = lower;
-    while(fahr < upper)
+    while (fahr < upper)
     {
-	printf("%3d\t%6f\n", fahr, temp_convert(fahr));
-	fahr = fahr + step;
+        printf("%3d\t%6f\n", fahr, temp_convert(fahr));
+        fahr = fahr + step;
     }
 }
 

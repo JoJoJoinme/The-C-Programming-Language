@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 void main()
 {
@@ -7,16 +7,16 @@ void main()
     space = 0;
     table = 0;
     newline = 0;
-    while((c = getchar()) != EOF)
+    while ((c = getchar()) != EOF)
     {
-       if(c == '\n')
-           ++newline;
-       else if(c == ' ')
-	   ++space;
-       else if(c == '\t')
-	   ++table;
-       else
-	   ++other;
+        if (c == '\n')
+            ++newline;
+        else if (c == ' ')
+            ++space;
+        else if (c == '\t')
+            ++table;
+        else
+            ++other;
     }
     printf("space num is:%d\ntable num is:%d\nnewline num is:%d\nother character num is:%d", space, table, newline, other);
 }
