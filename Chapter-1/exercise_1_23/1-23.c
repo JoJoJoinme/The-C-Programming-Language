@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-int flag = 0; // default: uncomment
+// int single_quote = 1; // default: unquoted
+int quoted = 1; // default: unquoted
+int flag = 0;   // default: uncomment
 
 int main(void)
 {
@@ -11,7 +13,9 @@ int main(void)
     {
         if (!flag) // uncomment
         {
-            if (c == '/')
+            if (c == '\'' || c == '\"')
+                quoted = !quoted;
+            else if (c == '/')
             {
                 if ((next = getchar()) == '/')
                     splash_flag = 1;
@@ -20,12 +24,27 @@ int main(void)
                 else if (next == EOF) // EOF
                     eof = 1;
             }
-            flag = splash_flag + star_flag;
-            if (flag == 0)
+            if (!quoted)
             {
-                putchar(c);
-                if (next != -2)
-                    putchar(next);
+                next = c;
+                do
+                    putchar(c);
+                while ((c = getchar()) != EOF && c != next);
+                if (c == next)
+                    putchar(c);
+                else 
+                    eof = 1;
+                quoted = !quoted;
+            }
+            else
+            {
+                flag = splash_flag + star_flag;
+                if (flag == 0)
+                {
+                    putchar(c);
+                    if (next != -2)
+                        putchar(next);
+                }
             }
         }
         else
